@@ -10,19 +10,15 @@ public class PostFileToDrive extends BaseAPI {
 
     String apiPath="drive/v3/files";
     String accessToken;
-    HashMap<String,String> queryParams;
-    String request;
+    Object request;
 
     public PostFileToDrive(String baseURI,String accessToken) {
         super(baseURI);
         this.accessToken = accessToken;
     }
 
-    public void setFields(HashMap<String,String> queryParams) {
-        this.queryParams = queryParams;
-    }
 
-    public void setRequest(String request){this.request=request;}
+    public void setRequest(Object request){this.request=request;}
 
     @Override
     protected void createRequest() {
