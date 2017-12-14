@@ -10,7 +10,7 @@ public class BaseTest {
 
 	public static final Logger logger = Logger.getLogger(BaseTest.class);
 	protected static String accessToken;
-	
+
 	@BeforeSuite(alwaysRun=true)
 	public void BeforeSuite() throws Exception
 	{
@@ -27,6 +27,6 @@ public class BaseTest {
 		postToken.setExpectedStatusCode(200);
 		postToken.perform();
 		accessToken = postToken.getAccessToken();
-	    logger.info("OAuth Token Received = " + accessToken);
+		logger.info("OAuth Token Received = " + accessToken);
 	}
 }

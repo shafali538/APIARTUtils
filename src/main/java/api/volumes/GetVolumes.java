@@ -1,4 +1,4 @@
-package api.mylibraries.bookshelf;
+package api.volumes;
 
 import api.BaseAPI;
 
@@ -9,30 +9,25 @@ import static io.restassured.RestAssured.given;
  */
 public class GetVolumes extends BaseAPI {
 
-    String apiPath="/mylibrary/bookshelves/{shelfId}/volumes";
-    String accessToken;
-    int shelfId;
+    String apiPath="/volumes";
+    String searchQuery;
 
-    public GetVolumes(String baseURI,String accessToken) {
+    public GetVolumes(String baseURI,String searchQuery) {
         super(baseURI);
-        this.accessToken = accessToken;
-    }
-
-    public void setShelfId(int shelfId) {
-        this.shelfId = shelfId;
+        this.searchQuery=searchQuery;
     }
 
     @Override
     protected void createRequest() {
         requestSpecBuilder.setBaseUri(baseURI);
         requestSpecBuilder.setBasePath(apiPath);
-        requestSpecBuilder.addPathParam("shelfId",shelfId);
+        requestSpecBuilder.addQueryParam("q",searchQuery);
         requestSpecification=requestSpecBuilder.build();
     }
 
     @Override
     protected void executeRequest() {
-        apiResponse = given().spec(requestSpecification).auth().oauth2(accessToken).get();
+        apiResponse = given().spec(requestSpecification).get();
     }
 
     @Override
