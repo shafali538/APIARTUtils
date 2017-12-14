@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="DemoSuite" verbose ="5" parallel="methods" thread-count="10">
+<suite name="DemoSuite" verbose="5" parallel="methods" thread-count="10">
 
     <listeners>
         <listener class-name="utils.ExtentReportListener"></listener>
@@ -7,8 +7,8 @@
 
     <test name="DemoTest">
         <classes>
-            <class name="test.TestBookAddToShelf"></class>
-            <class name="test.TestBookShelf"></class>
+            <class name="test.TestBooksAPI"></class>
+            <class name="test.TestDiscoverAPI"></class>
         </classes>
     </test>
 </suite>
