@@ -1,6 +1,7 @@
 package api.drive;
 
 import api.BaseAPI;
+import api.drive.pojo.PostFileRequest;
 
 import java.util.HashMap;
 
@@ -8,9 +9,9 @@ import static io.restassured.RestAssured.given;
 
 public class PostFileToDrive extends BaseAPI {
 
-    String apiPath="drive/v3/files";
+    String apiPath="/files";
     String accessToken;
-    Object request;
+    PostFileRequest request;
 
     public PostFileToDrive(String baseURI,String accessToken) {
         super(baseURI);
@@ -18,7 +19,7 @@ public class PostFileToDrive extends BaseAPI {
     }
 
 
-    public void setRequest(Object request){this.request=request;}
+    public void setRequest(PostFileRequest request){this.request=request;}
 
     @Override
     protected void createRequest() {

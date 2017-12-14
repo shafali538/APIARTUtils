@@ -3,31 +3,29 @@ package test;
 import api.discover.GetDiscoveryList;
 import api.discover.pojo.DiscoveryItems;
 import api.discover.pojo.Item;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.PropertiesManager;
 
 import java.io.IOException;
 
-public class TestDiscoverAPI extends BaseTest {
+public class TestDiscoveryAPI extends BaseTest {
+
+    public static final Logger logger = Logger.getLogger(TestDiscoveryAPI.class);
 
     @Test
     public void checkCountOfDiscoveryAPI() throws IOException {
 
-        //Get DiscoverY API
-        GetDiscoveryList getDiscoveryList = new GetDiscoveryList(PropertiesManager.getProperty("baseURI"),accessToken);
+        //Get API Title and Version from the Get Discovery API
+        GetDiscoveryList getDiscoveryList = new GetDiscoveryList(PropertiesManager.getProperty("discoveryBaseURI"));
         getDiscoveryList.setFields("items(title,version)");
         getDiscoveryList.setExpectedStatusCode(200);
         getDiscoveryList.perform();
-        System.out.println(getDiscoveryList.getApiResponseAsString());
 
-        //Verify that count and get title and version of API
+        //Verify the count
         DiscoveryItems discoveryItems = getDiscoveryList.getAPIResponseAsPOJO(DiscoveryItems.class);
         logger.info("Number of API's returned : " +  discoveryItems.items.size());
-        for(Item item: discoveryItems.items){
-         System.out.println(item.title);
-         System.out.println(item.version);
-        }
         Assert.assertEquals(193,discoveryItems.items.size());
     }
 }

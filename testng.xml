@@ -8,7 +8,8 @@
     <test name="DemoTest">
         <classes>
             <class name="test.TestBooksAPI"></class>
-            <class name="test.TestDiscoverAPI"></class>
+            <class name="test.TestDiscoveryAPI"></class>
+            <class name="test.TestDriveAPI"></class>
         </classes>
     </test>
 </suite>

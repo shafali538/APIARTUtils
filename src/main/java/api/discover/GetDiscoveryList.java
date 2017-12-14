@@ -6,13 +6,11 @@ import static io.restassured.RestAssured.given;
 
 public class GetDiscoveryList extends BaseAPI {
 
-    String apiPath="/discovery/v1/apis";
-    String accessToken;
+    String apiPath="/apis";
     String fields;
 
-    public GetDiscoveryList(String baseURI,String accessToken) {
+    public GetDiscoveryList(String baseURI) {
         super(baseURI);
-        this.accessToken = accessToken;
     }
 
     public void setFields(String fields) {
@@ -29,7 +27,8 @@ public class GetDiscoveryList extends BaseAPI {
 
     @Override
     protected void executeRequest() {
-        apiResponse = given().spec(requestSpecification).auth().oauth2(accessToken).get();
+        apiResponse = given().spec(requestSpecification).get();
+
     }
 
     @Override
