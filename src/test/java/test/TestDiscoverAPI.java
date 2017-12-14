@@ -16,7 +16,7 @@ public class TestDiscoverAPI extends BaseTest {
 
         //Get DiscoverY API
         GetDiscoveryList getDiscoveryList = new GetDiscoveryList(PropertiesManager.getProperty("baseURI"),accessToken);
-        getDiscoveryList.setFields("items(title%2Cversion)");
+        getDiscoveryList.setFields("items(title,version)");
         getDiscoveryList.setExpectedStatusCode(200);
         getDiscoveryList.perform();
         System.out.println(getDiscoveryList.getApiResponseAsString());
