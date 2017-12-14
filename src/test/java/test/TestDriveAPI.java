@@ -30,6 +30,7 @@ public class TestDriveAPI extends BaseTest {
         postFileToDrive.setExpectedStatusCode(200);
         postFileToDrive.perform();
         PostFileResponse postFileResponse = postFileToDrive.getAPIResponseAsPOJO(PostFileResponse.class);
+        logger.info("File " +  postFileResponse.getName() + " added to google drive");
         Assert.assertEquals(testData.get("name"),postFileResponse.getName());
     }
 

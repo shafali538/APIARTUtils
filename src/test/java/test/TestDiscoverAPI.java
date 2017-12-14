@@ -23,6 +23,7 @@ public class TestDiscoverAPI extends BaseTest {
 
         //Verify that count and get title and version of API
         DiscoveryItems discoveryItems = getDiscoveryList.getAPIResponseAsPOJO(DiscoveryItems.class);
+        logger.info("Number of API's returned : " +  discoveryItems.items.size());
         for(Item item: discoveryItems.items){
          System.out.println(item.title);
          System.out.println(item.version);
